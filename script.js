@@ -34,3 +34,4 @@ document.addEventListener('DOMContentLoaded', async function() {
         weatherContainer.innerHTML = `<p>Unable to retrieve weather data: ${error.message}</p>`;
     }
  });
+ 
