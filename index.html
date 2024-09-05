@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Update - Iligan City</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <h1>
+        Weather Update
+    </h1>
+    <hr> 
+    <div id="weather">
+    </div>
+</div>
+    <div class="map">
+    <p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3948.7488191919992!2d124.24397298487895!3d8.227995131037869!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x325579b328c9540d%3A0xe6e208aba2f0d03b!2sIligan%20City%2C%20Lanao%20del%20Norte!5e0!3m2!1sen!2sph!4v1723687808932!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async function() {
+           const apiKey = 'f3770cf53d4b46728ab05136242208';
+           const cityName = 'Iligan';
+           const apiEndpoint = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${cityName}&days=7`;
+        
+        
+           try {
+               const response = await fetch(apiEndpoint); // Wait for the fetch to complete
+               const weatherData = await response.json(); // Wait for the response to be parsed into JSON
+               console.log(weatherData);
+        
+        
+               const weatherContainer = document.getElementById('weather');
+               const temperatureInCelsius = weatherData.current.temp_c;
+               const weatherDescription = weatherData.current.condition.text;
+               const humidityLevel = weatherData.current.humidity;
+            
+                weatherData.forecast.forecastday.forEach(element => {
+                console.log(element)
+                weatherContainer.innerHTML += `
+                
+                <div class ="weather-data weather-container"> 
+                <p><strong>Date:</strong> ${element.date}</p>
+                <p><img src="https:${element.day.condition.icon}"></p>
+                <p><strong>Temperature:</strong> ${element.day.avgtemp_c}°C</p>
+                <p><strong>Weather:</strong> ${element.day.condition.text}</p>
+                <p><strong>Humidity:</strong> ${element.day.avghumidity}%</p>
+                </div>
+                `;
+                });
+        
+           } catch (error) {
+               const weatherContainer = document.getElementById('weather');
+               weatherContainer.innerHTML = `<p>Unable to retrieve weather data: ${error.message}</p>`;
+           }
+        });
+           </script>
+           
+    <footer>Michael Angelo Mortola | August 15, 2024</footer>
+</body>
+</html>

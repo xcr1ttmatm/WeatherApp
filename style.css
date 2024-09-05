@@ -1,0 +1,52 @@
+body {
+    background-image: url(giphy.webp);
+    background-color: transparent;
+    background-size:cover;
+    background-position: center;
+    background-blend-mode:overlay;
+}
+h1 {
+    text-align: center;
+    font-size:35px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+hr {
+    color: rgba(255, 255, 255, 0.37);
+}
+.weather-container {
+    background-color:whitesmoke;
+    width: 50%;
+    margin: 7px;
+    padding: 20px;
+    border: solid 1px;
+    border-radius: 10px;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+footer{
+    margin: 5%;
+    text-align: right;
+    font-size: 25px;
+    display: absolute;
+    color:rgb(0, 0, 0);
+
+}
+.map {
+    height: 7%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: -1px;
+}
+
+.weather-data, .weather-container{
+    background-color: #DDF8F7;d
+    display: flex;
+    flex-direction: column;
+    width:14%;
+}
+
+div#weather {
+    display: flex;
+}
